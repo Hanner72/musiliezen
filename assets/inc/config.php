@@ -22,13 +22,13 @@ define('DB_DRIVER', 'mysql');
 define('DB_SERVER', 'localhost');
 define('DB_SERVER_USERNAME', 'root');
 define('DB_SERVER_PASSWORD', '');
-define('DB_DATABASE', 'musicapo2023');
+define('DB_DATABASE', 'musiliezen');
 
 
-define('PROJECT_NAME', '#musicapo - Die Musikvereinsverwaltung');
-define('PROJECT_NAME_KURZ', '#musicapo');
+define('PROJECT_NAME', '#musiliezen - Musik Bezirksverwaltung Liezen');
+define('PROJECT_NAME_KURZ', '#musiliezen');
 define('PROJECT_NAME_FIRST', 'MUSI'); // Topmenu Überschrift Farbe 1
-define('PROJECT_NAME_SECOND', 'CAPO'); // Topmenu Überschrift Farbe 2
+define('PROJECT_NAME_SECOND', 'LIEZEN'); // Topmenu Überschrift Farbe 2
 
 $dboptions = array(
                 PDO::ATTR_PERSISTENT => false,
