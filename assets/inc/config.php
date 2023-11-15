@@ -4,37 +4,32 @@ error_reporting(E_ALL & ~E_DEPRECATED & ~E_NOTICE);
 ob_start();
 session_start();
 
-// SERVER
-/* define('DB_DRIVER', 'mysql');
-define('DB_SERVER', 'localhost');
-define('DB_SERVER_USERNAME', 'mvpalfau_musicapo2023');
-define('DB_SERVER_PASSWORD', 'upload0815!');
-define('DB_DATABASE', 'mvpalfau_musicapo2023'); */
 
-/* define('DB_DRIVER', 'mysql');
-define('DB_SERVER', 'mysql57b.ssl-net.net');
-define('DB_SERVER_USERNAME', 'h13u228');
-define('DB_SERVER_PASSWORD', 'Da05nnerj12');
-define('DB_DATABASE', 'h13u228_dacapo'); */
+// SERVER
+define('DB_DRIVER', 'mysql');
+define('DB_SERVER', 'localhost');
+define('DB_SERVER_USERNAME', 'mvpalfau_musiliezen');
+define('DB_SERVER_PASSWORD', 'oF8NIYOi7s!');
+define('DB_DATABASE', 'mvpalfau_musiliezen');
 
 //LOCALHOST
-define('DB_DRIVER', 'mysql');
+/* define('DB_DRIVER', 'mysql');
 define('DB_SERVER', 'localhost');
 define('DB_SERVER_USERNAME', 'root');
 define('DB_SERVER_PASSWORD', '');
-define('DB_DATABASE', 'musiliezen');
+define('DB_DATABASE', 'mvverwaltung'); */
 
 
-define('PROJECT_NAME', '#musiliezen - Musik Bezirksverwaltung Liezen');
-define('PROJECT_NAME_KURZ', '#musiliezen');
+define('PROJECT_NAME', '#musicapo - Die Musikvereinsverwaltung');
+define('PROJECT_NAME_KURZ', '#musicapo');
 define('PROJECT_NAME_FIRST', 'MUSI'); // Topmenu Überschrift Farbe 1
-define('PROJECT_NAME_SECOND', 'LIEZEN'); // Topmenu Überschrift Farbe 2
+define('PROJECT_NAME_SECOND', 'CAPO'); // Topmenu Überschrift Farbe 2
 
 $dboptions = array(
-                PDO::ATTR_PERSISTENT => false,
-                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-                PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
+              PDO::ATTR_PERSISTENT => false,
+              PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+              PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+              PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
             );
 
 try {
@@ -43,12 +38,6 @@ try {
     echo $ex->getMessage();
     die;
 }
-
-require_once 'functions.php';
-
-
-$_SESSION["errorType"] = "";
-$_SESSION["errorMsg"] = "";
 
 //get error/success messages
 if ($_SESSION["errorType"] != "" && $_SESSION["errorMsg"] != "") {
