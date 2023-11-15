@@ -1,0 +1,129 @@
+.navbar {
+  border-style: dashed;
+  border-width: 2px;
+  border-color: orange;
+  background: rgba(255,165,0,0.1) !important;
+}
+
+.breadcrumb {
+  border-style: dashed;
+  border-width: 2px;
+  border-color: gray;
+  background: rgba(128,128,128,0.1) !important;
+}
+
+.container-fluid {
+  border-style: dashed;
+  border-width: 2px;
+  border-color: blueviolet;
+  background: rgba(138,43,226,0.1) !important;
+}
+
+.row {
+  border-style: dashed;
+  border-width: 2px;
+  border-color: aqua;
+  background: rgba(0,255,255,0.1) !important;
+}
+
+.accordion {
+  border-style: dashed;
+  border-width: 2px;
+  border-color: deeppink;
+  background: rgba(255,20,147,0.1) !important;
+}
+
+.accordion>.card>.card-header {
+  border-style: dashed;
+  border-width: 2px;
+  border-color: rgb(128, 69, 100);
+  background: rgba(128, 69, 100,0.1) !important;
+}
+
+.collapse {
+  background: rgba(255,20,147,0.1) !important;
+}
+
+.col-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xl-1  {
+  border-style: dashed !important;
+  border-width: 2px !important;
+  border-color: rgb(210,105,30) !important;
+  background: rgba(210,105,30,0.1) !important;
+}
+
+.col-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xl-2 {
+  border-style: dashed !important;
+  border-width: 2px !important;
+  border-color: rgb(180,99,27) !important;
+  background: rgba(180,99,27,0.1) !important;
+}
+
+.col-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xl-3 {
+  border-style: dashed !important;
+  border-width: 2px !important;
+  border-color: rgb(170,97,26) !important;
+  background: rgba(170,97,26,0.1) !important;
+}
+
+.col-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xl-4 {
+  border-style: dashed !important;
+  border-width: 2px !important;
+  border-color: rgb(160,95,25) !important;
+  background: rgba(160,95,25,0.1) !important;
+}
+
+.col-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xl-5 {
+  border-style: dashed !important;
+  border-width: 2px !important;
+  border-color: rgb(150,93,24) !important;
+  background: rgba(150,93,24,0.1) !important;
+}
+
+.col-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xl-6 {
+  border-style: dashed !important;
+  border-width: 2px !important;
+  border-color: rgb(140,91,23) !important;
+  background: rgba(140,91,23,0.1) !important;
+}
+
+.col-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xl-7 {
+  border-style: dashed !important;
+  border-width: 2px !important;
+  border-color: rgb(130,89,22) !important;
+  background: rgba(130,89,22,0.1) !important;
+}
+
+.col-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xl-8 {
+  border-style: dashed !important;
+  border-width: 2px !important;
+  border-color: rgb(130,89,22) !important;
+  background: rgba(130,89,22,0.1) !important;
+}
+
+.col-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xl-9 {
+  border-style: dashed !important;
+  border-width: 2px !important;
+  border-color: rgb(120,87,21) !important;
+  background: rgba(120,87,21,0.1) !important;
+}
+
+.col-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xl-10 {
+  border-style: dashed !important;
+  border-width: 2px !important;
+  border-color: rgb(110,85,20) !important;
+  background: rgba(110,85,20,0.1) !important;
+}
+
+.col-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xl-11 {
+  border-style: dashed !important;
+  border-width: 2px !important;
+  border-color: rgb(100,83,19) !important;
+  background: rgba(100,83,19,0.1) !important;
+}
+
+.col-12, .col-sm-12, .col-md-12, .col-lg-12, .col-xl-12 {
+  border-style: dashed !important;
+  border-width: 2px !important;
+  border-color: rgb(90,81,18) !important;
+  background: rgba(90,81,18,0.1) !important;
+}

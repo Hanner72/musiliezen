@@ -1,48 +1,67 @@
 <?php
 
-error_reporting(E_ALL & ~E_DEPRECATED & ~E_NOTICE);
-ob_start();
-session_start();
+// PFADANGABEN ##############################################
+
+define( "DOMAIN" , 'https://musiliezen.mv-palfau.at' );                // mit "http://" ohne abschließendem Slash (/) !
+define( "INSTALLORDNER" , '' );                         // ohne abschließendem Slash (/) !
+
+// SONSTIGE EINSTELLUNGEN ###################################
+
+define( "PREINC" , 0 );                                       // Cookies, Sessions, Files und GET anzeigen (1=ja, 0=nein)
+
+define( "ERINNERUNGSMAIL_STPOELTEN" , 'johann.danner@strabag.com' );    // Mailadresse der die Erinnerungsmail für Lagerbestellung erhalten soll
+define( "ERINNERUNGSMAIL_THALGAU" , 'florian.veleba@strabag.com' );
+
+#############################################################
 
 
-// SERVER
-define('DB_DRIVER', 'mysql');
-define('DB_SERVER', 'localhost');
-define('DB_SERVER_USERNAME', 'mvpalfau_musiliezen');
-define('DB_SERVER_PASSWORD', 'oF8NIYOi7s!');
-define('DB_DATABASE', 'mvpalfau_musiliezen');
 
-//LOCALHOST
-/* define('DB_DRIVER', 'mysql');
-define('DB_SERVER', 'localhost');
-define('DB_SERVER_USERNAME', 'root');
-define('DB_SERVER_PASSWORD', '');
-define('DB_DATABASE', 'mvverwaltung'); */
+require_once 'db.php';      //die Daten für die Datenbankverbindung in der db.php eintragen!!
 
+// AB HIER NICHTS MEHR ÄNDERN! ##############################
 
-define('PROJECT_NAME', '#musicapo - Die Musikvereinsverwaltung');
-define('PROJECT_NAME_KURZ', '#musicapo');
-define('PROJECT_NAME_FIRST', 'MUSI'); // Topmenu Überschrift Farbe 1
-define('PROJECT_NAME_SECOND', 'CAPO'); // Topmenu Überschrift Farbe 2
+// mysqli Verbindung
+  $conn = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
+  mysqli_query($conn, "SET NAMES 'utf8'");
 
-$dboptions = array(
-              PDO::ATTR_PERSISTENT => false,
-              PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-              PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-              PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
-            );
+  if(!$conn)
+  {
+    echo "Verbindungsfehler mit Datenbank!";
+  }
+// / mysqli Verbindung
 
-try {
-    $DB = new PDO(DB_DRIVER.':host='.DB_SERVER.';dbname='.DB_DATABASE, DB_SERVER_USERNAME, DB_SERVER_PASSWORD, $dboptions);
-} catch (Exception $ex) {
+// pdo Verbindung
+  $dboptions = array(
+    PDO::ATTR_PERSISTENT => false,
+    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+    PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
+  );
+
+  try {
+    $pdo = new PDO('mysql' . ':host=' . $dbhost . ';dbname=' . $dbname, $dbuser, $dbpass, $dboptions);
+  } catch (Exception $ex) {
     echo $ex->getMessage();
     die;
-}
+  }
+
+  /* try {
+    $pdo2 = new PDO('mysql' . ':host=' . $dbhost2 . ';dbname=' . $dbname2, $dbuser2, $dbpass2, $dboptions);
+  } catch (Exception $ex2) {
+    echo $ex2->getMessage();
+    die;
+  } */
+// / pdo Verbindung
+
+$_SESSION["errorType"] = "";
+$_SESSION["errorMsg"] = "";
 
 //get error/success messages
 if ($_SESSION["errorType"] != "" && $_SESSION["errorMsg"] != "") {
-    $ERROR_TYPE = $_SESSION["errorType"];
-    $ERROR_MSG = $_SESSION["errorMsg"];
-    $_SESSION["errorType"] = "";
-    $_SESSION["errorMsg"] = "";
+  $ERROR_TYPE = $_SESSION["errorType"];
+  $ERROR_MSG = $_SESSION["errorMsg"];
+  $_SESSION["errorType"] = "";
+  $_SESSION["errorMsg"] = "";
 }
+
+?>
