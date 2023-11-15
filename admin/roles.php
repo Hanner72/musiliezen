@@ -415,6 +415,8 @@ if(isset($_GET['perunassign'])){
 
 </body>
 
+<?php include "../assets/templates/10_footer.php"; ?>
+
 <script type="text/javascript">
   var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
   var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {

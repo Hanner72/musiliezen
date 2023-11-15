@@ -1,15 +1,16 @@
 <!-- Sidebar Holder -->
 <?php
     $pfad = $_SERVER["PHP_SELF"];
-    $sub = "/app";
+    $sub = "";
     $root = dirname($_SERVER['PHP_SELF']);
 ?>
 
 <nav id="sidebar">
     <div class="sidebar-header text-center">
-        <img src="../assets/images/strabag_logo.png" class="rounded mx-auto img-fluid" alt="Strabag">
-        <p class="text-light"><h1>FF-WW<div class="text-danger">Sport Halle</div></h1></p>
-        <p>Hallo <?php echo $_SESSION['vorname']; $user=$_SESSION['user'] ?>!</p>
+        <div class="sidebar-header text-center bg-white mb-3">
+            <img src="../assets/images/logo_st1600.png" class="rounded mx-auto img-fluid">
+        </div>
+        <p class="text-white" style="background: #856811;">Hallo <?php echo $_SESSION['vorname']; $user=$_SESSION['user'] ?>!</p>
         <?php
             $sql = "SELECT * FROM user WHERE username='$user'";
             $result = mysqli_query($conn, $sql);        
@@ -26,7 +27,7 @@
         </li>
 
 <!-- WWZZ MENÜ -->
-            <li class="bg-black">
+            <li class="bg-dark">
                 <p> -- Sportstättenbau</p>
             </li>
 
@@ -151,7 +152,7 @@
             <a href="../bilderupload/"><i class="fas fa-image"></i> Fotos senden</a>
         </li> -->
 <!-- Für ALLE TRENNER -->
-        <li class="bg-black">
+        <li class="bg-dark">
             <p> -- Globale Links</p>
         </li>
     <!-- Zimmersuche MENÜ -->
@@ -175,7 +176,7 @@
         </li> -->
 
 <!-- Administration MENÜ -->
-            <li class="bg-black">
+            <li class="bg-dark">
                 <p> -- Administration</p>
             </li>
 

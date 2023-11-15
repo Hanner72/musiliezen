@@ -3,11 +3,16 @@
 @import url('https://fonts.googleapis.com/css?family=Numans');
 
 html,body{
-background-image: url('../../assets/images/2021_hintergrund_ff_sportstaettenbau.png');
+/* background-image: url('../../assets/images/background.jpg');
 background-size: cover;
-background-repeat: no-repeat;
+background-repeat: no-repeat; */
 height: 100%;
 font-family: 'Numans', sans-serif;
+background: url(../../assets/images/background.jpg) center center no-repeat fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 .container{
@@ -26,7 +31,7 @@ background-color: rgba(0,0,0,0.7) !important;
 .social_icon span{
 font-size: 60px;
 margin-left: 10px;
-color: #ff0000;
+color: #579A40;
 }
 
 .social_icon span:hover{
@@ -46,7 +51,7 @@ top: -45px;
 
 .input-group-prepend span{
 width: 50px;
-background-color: #ff0000;
+background-color: #579A40;
 color: black;
 border:0 !important;
 }
@@ -71,7 +76,7 @@ margin-right: 5px;
 
 .login_btn{
 color: black;
-background-color: #ff0000;
+background-color: #579A40;
 width: 100px;
 }
 

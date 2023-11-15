@@ -41,15 +41,15 @@ else
 <div class="container">
 	<div class="d-flex justify-content-center h-100">
 		<div class="card">
-			<div class="card-header">
-				<h3>Sign In</h3>
-				<div class="d-flex justify-content-end social_icon">
-					<span><i class="fab fa-facebook-square"></i></span>
-					<span><i class="fab fa-google-plus-square"></i></span>
-					<span><i class="fab fa-twitter-square"></i></span>
+			<div class="card-header bg-white">
+				<div class="d-flex justify-content-center w-100">
+					<img src="./assets/images/logo_st1600.png" width="95%">
 				</div>
 			</div>
 			<div class="card-body">
+				<div class="d-flex justify-content-center links mb-3">
+					Zur Verwaltungsseite für Wertungsspiele des Blasmusikverbandes Steiermark Bezirk Liezen. (inoffiziell)
+				</div>
 				<form action="./assets/inc/security.php" method="POST">
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
@@ -76,11 +76,6 @@ else
 				</form>
 			</div>
 			<div class="card-footer">
-				<div class="d-flex justify-content-center links">
-					Info!<br>Benutzername und Passwort sind jeweils der Nachname UND die ersten 3 Buchstaben vom Vornamen.<br>
-					z.B. dannerjoh<br><br>
-					Wer sich nicht einloggen kann, bitte um Info!<br><br>
-				</div>
 				<div class="d-flex justify-content-center links">
 					Du hast keinen Account?<a href="mailto:johann.danner&#64;gmail.com">Sign Up</a>
 				</div>

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #ae8815">
     <div class="container-fluid">
 
         <button type="button" id="sidebarCollapse" class="navbar-btn">
@@ -7,7 +7,7 @@
             <span></span>
         </button>
         
-        <p><h5 class="text-light mx-3 mt-2">FF-WW App</h5></p> <img src="./../assets/images/strabag_logo.png" alt="Strabag-Logo" height="35px">
+        <p><h5 class="text-light mx-3 mt-2">Verwaltung</h5></p> <p class="bg-white mt-2 p-2"><img src="./../assets/images/logo_st1600.png" height="35px"></p> 
 
         <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <i class="fas fa-align-justify"></i>
