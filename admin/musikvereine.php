@@ -417,7 +417,6 @@ include "../assets/templates/05_scripte_head.php"; ?>
         });
       }, false);
     })();
-
   </script>
 
 </body>

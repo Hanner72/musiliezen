@@ -1,5 +1,7 @@
 <?php
 
+error_reporting(E_ALL & ~E_NOTICE);
+
 include "../assets/templates/01_top_includes.php";
 
 include "../assets/templates/02_doctype.php";
@@ -143,8 +145,8 @@ if(isset($_GET['useredit'])){
 
 <!-- User ändern Form -->
         <?php
-          $sql = "SELECT * FROM all_roles, all_userroles, User
-                    WHERE all_userroles.UserID = User.ID
+          $sql = "SELECT * FROM all_roles, all_userroles, user
+                    WHERE all_userroles.userID = user.ID
                       AND all_userroles.RoleID = all_roles.ID
                       AND username = '$useredit'";
           $result = mysqli_query($conn, $sql);
@@ -215,8 +217,8 @@ if(isset($_GET['useredit'])){
             <div class="col-lg-4 mb-2">
               <label class="control-label">Rolle</label>
                 <?php
-                  $sql = "SELECT all_userroles.UserID, all_userroles.RoleID, all_roles.*, user.ID, user.username FROM all_roles, all_userroles, User
-                            WHERE all_userroles.UserID = User.ID
+                  $sql = "SELECT all_userroles.userID, all_userroles.RoleID, all_roles.*, user.ID, user.username FROM all_roles, all_userroles, user
+                            WHERE all_userroles.userID = user.ID
                               AND all_userroles.RoleID = all_roles.ID
                               AND username = '$u_username'";
                   foreach ($pdo->query($sql) as $row) { ?>
@@ -254,7 +256,7 @@ if(isset($_GET['useredit'])){
             </div>
           </div>
         </form>
-        <?php endforeach;?>
+        <?php endforeach; ?>
 <!-- / User ändern Form -->
 
       </div>

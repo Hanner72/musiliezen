@@ -14,7 +14,10 @@
     });
     
     $(function () {
-        jQuery('[data-toggle="tooltip"]').tooltip()
+        jQuery('[data-toggle="tooltip"]').tooltip({
+        animated: 'fade',
+        html: true
+        });
     })
     
 </script>

@@ -26,38 +26,13 @@
             <a href="../globalfiles/dashboard.php"><i class="fa fa-home"></i> HOME</a>
         </li>
 
-<!-- WWZZ MENÜ -->
+<!-- Wertungen MENÜ -->
             <li class="bg-dark">
-                <p> -- Sportstättenbau</p>
+                <p> -- Wertungen</p>
             </li>
 
-    <!-- WWZZ MENÜ - Technik -->
-        <!-- <?php if($rbac->Users->hasRole('WW-Admin', $userid)==1){ ?>
-            <li class="<?php if ($pfad==$sub."/fidbox/fidbox.php" || $pfad==$sub."/pruefberichte/pruefberichte.php"){ echo "active"; } ?>">
-                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-cubes"></i> Technik</a>
-                <ul class="collapse list-unstyled" id="homeSubmenu">
-                    <li>
-                        <a href="../pruefberichte/pruefberichte.php"><i class="fas fa-clipboard-list"></i> Prüfberichte</a>
-                    </li>
-                    <li>
-                        <a href="../fidbox/fidbox.php"><i class="fas fa-chart-line"></i> Fidbox</a>
-                    </li>
-                </ul>
-            </li> 
-        <?php } ?> -->
-    <!-- WWZZ MENÜ - Statistik -->
-        <!-- <?php if($rbac->Users->hasRole('DirAH-Admin', $userid)==1){ ?>
-            <li class="<?php if ($pfad==$sub."/stunden/auswertung.php"){ echo "active"; } ?>">
-                <a href="#statsSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-chart-area"></i> Statistiken</a>
-                <ul class="collapse list-unstyled" id="statsSubmenu">
-                    <li>
-                        <a href="../stunden/auswertung.php"><i class="fas fa-chart-line"></i> BVH Auswertung</a>
-                    </li>
-                </ul>
-            </li> 
-        <?php } ?> -->
-    <!-- WWZZ MENÜ - Lagerverwaltung -->
-        <!-- <?php if($rbac->Users->hasRole('WW-Admin', $userid)==1){ ?>
+    <!-- Wertungen MENÜ - Konzertwertung -->
+        <?php if($rbac->Users->hasRole('Wertung_MOD', $userid)==1){ ?>
             <?php if($pfad==$sub."/lager/lagerstand.php" || // Collapse Menü öffnen wenn Link passt
                     $pfad==$sub."/lager/artikel.php" ||
                     $pfad==$sub."/lager/artikel_neu.php" ||
@@ -77,10 +52,10 @@
                         $lagershow = "";
                     }?>
             <li class="<?=$lageractive?>">
-                <a href="#lagerSubmenu" data-toggle="collapse" aria-expanded="<?=$lagerexpand?>" class="dropdown-toggle <?=$lagertoggle?>"><i class="fas fa-cubes"></i> Lagerverwaltung</a>
+                <a href="#lagerSubmenu" data-toggle="collapse" aria-expanded="<?=$lagerexpand?>" class="dropdown-toggle <?=$lagertoggle?>">Konzertwertung</a>
                 <ul class="collapse list-unstyled <?=$lagershow?>" id="lagerSubmenu">
-                    <li class="<?=($pfad==$sub."/lager/artikel.php")?"liactive":""?>">
-                        <a href="../lager/artikel.php"><i class="fas fa-clipboard-list"></i> Artikel</a>
+                    <li class="<?=($pfad==$sub."/lager/artikel.php")?"liactive":""?> lismall">
+                        <a href="../lager/artikel.php">Musikvereine</a>
                     </li>
                     <li class="<?=($pfad==$sub."/lager/lagerstand.php")?"liactive":""?>">
                         <a href="../lager/lagerstand.php"><i class="fas fa-chart-line"></i> Lagerstand</a>
@@ -93,7 +68,7 @@
                     </li>
                 </ul>
             </li>
-        <?php } ?>  -->
+        <?php } ?> 
     <!-- WWZZ MENÜ - Geräteliste -->
         <!-- <?php if($rbac->Users->hasRole('WW-Admin', $userid)==1){ ?>           
             <li class="<?=($pfad==$sub."/geraete/geraete.php")?"active":""?>">
@@ -151,29 +126,22 @@
                             ){ echo "active"; } ?>">
             <a href="../bilderupload/"><i class="fas fa-image"></i> Fotos senden</a>
         </li> -->
-<!-- Für ALLE TRENNER -->
+<!-- Globale Links MENÜ -->
         <li class="bg-dark">
             <p> -- Globale Links</p>
         </li>
-    <!-- Zimmersuche MENÜ -->
-        <!-- <li>
-            <a href="http://quartiere.strabag-sport.at/" target="_blank"><i class="fas fa-home"></i> Zimmersuche</a>
-        </li> -->
-    <!-- OAS-Online MENÜ -->
+    <!-- Blasmusikverband  MENÜ -->
         <li>
-            <a href="http://www.oas-strabag.at/oas20/AH/FF-Sportst%C3%A4ttenbau/WW-Sportst%C3%A4ttenbau-Hallen/WW-Allgemein/index.php?blsess=WW-Allgemein" target="_blank"><i class="fas fa-life-ring"></i> OAS - Online</a>
+            <a href="https://www.blasmusik.at/" target="_blank">Blasmusikverband</a>
         </li>
-    <!-- Infos MENÜ -->
-        <!-- <li class="<?php if ($pfad==$sub."/infos/notrufnummern.php"){ echo "active"; } ?>">
-            <?php if($rbac->Users->hasRole('WW-Admin', $userid)==1){ ?>
-            <a href="#infosSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-info-circle"></i> Infos</a>
-            <ul class="collapse list-unstyled" id="infosSubmenu">
-                <li>
-                    <a href="../infos/notrufnummern.php"><i class="fas fa-phone-volume"></i> Notrufnummern</a>
-                </li>
-            </ul>
-            <?php } ?>
-        </li> -->
+    <!-- Blasmusikverband Stmk MENÜ -->
+        <li>
+            <a href="https://www.blasmusik-verband.at" target="_blank">Blasmusikverband Stmk</a>
+        </li>
+    <!-- Blasmusikverband Liezen MENÜ -->
+        <li>
+            <a href="https://www.blasmusik-verband.at/Liezen" target="_blank">Blasmusikverband Liezen</a>
+        </li>
 
 <!-- Administration MENÜ -->
             <li class="bg-dark">
@@ -195,25 +163,43 @@
                     $adminmenutoggle = "collapsed";
                     $adminmenushow = "";
                 }?>
-
+    <!-- Benutzeradminmenüs -->
             <li>
                 <a href="#adminSubmenu" data-toggle="collapse" aria-expanded="<?=$adminmenuexpand?>" class="dropdown-toggle <?=$adminmenutoggle?>">Administration</a>
                 <ul class="collapse list-unstyled <?=$adminmenushow?>" id="adminSubmenu">
-                    <li class="<?php if ($pfad==$sub."/admin/roles.php"){ echo "active"; } ?>">
-                        <a href="../admin/roles.php"><i class="fas fa-user"></i> Benutzerrollen</a>
-                    </li>
                     <li class="<?php if ($pfad==$sub."/admin/user.php" || $pfad==$sub."/admin/useredit.php"){ echo "active"; } ?>">
                         <a href="../admin/user.php"><i class="fas fa-user"></i> Benutzer</a>
                     </li>
+                    <li class="<?php if ($pfad==$sub."/admin/roles.php"){ echo "active"; } ?>">
+                        <a href="../admin/roles.php"><i class="fas fa-user"></i> Benutzerrollen</a>
+                    </li>
+    <!-- MySQL Adminmenü -->
                     <li class="<?php if ($pfad==$sub."/admin/mysqladmin.php"){ echo "active"; } ?>">
                         <a href="../admin/mysqladmin.php" target="_blank"><i class="fa-solid fa-database"></i> MySQL Admin</a>
                     </li>
-                    <!-- <li>
-                        <a href="../visitenkarten"><i class="fas fa-wifi"></i> NFC Visitenkarten</a>
-                    </li> -->
-                    <!-- <li>
-                        <a href="../qrcode"><i class="fas fa-qrcode"></i> dyn. QR-Codes</a>
-                    </li> -->
+                </ul>
+            </li>
+    <!-- Musikvereinmenüs -->
+                <?php if($pfad==$sub."/admin/musikvereine.php"){
+                    $mvmenuactive = "active"; 
+                    $mvmenuexpand = "true";
+                    $mvmenutoggle = "";
+                    $mvmenushow = "show";
+                }else{
+                    $mvmenuactive = "";
+                    $mvmenuexpand = "false";
+                    $mvmenutoggle = "collapsed";
+                    $mvmenushow = "";
+                }?>
+            <li>
+                <a href="#mvSubmenu" data-toggle="collapse" aria-expanded="<?=$mvmenuexpand?>" class="dropdown-toggle <?=$mvmenutoggle?>">Musikvereine</a>
+                <ul class="collapse list-unstyled <?=$mvmenushow?>" id="mvSubmenu">
+                    <li class="<?php if ($pfad==$sub."/admin/musikvereine.php"){ echo "active"; } ?>">
+                        <a href="../admin/musikvereine.php"><i class="fa-solid fa-list-check"></i> Vereinsliste</a>
+                    </li>
+                    <li class="<?php if ($pfad==$sub."/admin/roles.php"){ echo "active"; } ?>">
+                        <a href="../admin/roles.php"><i class="fas fa-user"></i> Benutzerrollen</a>
+                    </li>
                 </ul>
             </li>
 
@@ -230,6 +216,7 @@
                     $vorlagenmenushow = "";
                 }?>
             <li>
+    <!-- Vorlagen -->
                 <a href="#adminvorlagen" data-toggle="collapse" aria-expanded="<?=$vorlagenmenuexpand?>" class="dropdown-toggle <?=$vorlagenmenutoggle?>">Vorlagen</a>
                 <ul class="collapse list-unstyled <?=$vorlagenmenushow?>" id="adminvorlagen">
                     <li class="<?php if ($pfad==$sub."/vorlagen/seitenvorlage.php"){ echo "active"; } ?>">
@@ -264,9 +251,9 @@
 <!-- FOOTER -->
     <ul>
     <div class="row" style="position: absolute; display: inline-block; bottom: 5px;">
-        <a href="https://github.com/HannerStrabag/WWZZ-App/issues" target="_blank" style="font-size: 12px; margin-left: -19px;">Bugs melden</a>
+        <a href="https://github.com/Hanner72/musiliezen/issues" target="_blank" style="font-size: 12px; margin-left: -19px;">Bugs melden</a>
         <a href="#" style="font-size: 12px; margin-left: -9px;">|</a>
-        <a href="https://github.com/HannerStrabag/WWZZ-App/discussions" target="_blank" style="font-size: 12px; margin-left: -7px;">Developerforum</a>
+        <a href="https://github.com/Hanner72/musiliezen/discussions" target="_blank" style="font-size: 12px; margin-left: -7px;">Developerforum</a>
     </div>
     </ul>
 
