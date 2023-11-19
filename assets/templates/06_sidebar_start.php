@@ -197,9 +197,9 @@
                     <li class="<?php if ($pfad==$sub."/admin/musikvereine.php"){ echo "active"; } ?>">
                         <a href="../admin/musikvereine.php"><i class="fa-solid fa-list-check"></i> Vereinsliste</a>
                     </li>
-                    <li class="<?php if ($pfad==$sub."/admin/roles.php"){ echo "active"; } ?>">
+                    <!-- <li class="<?php if ($pfad==$sub."/admin/roles.php"){ echo "active"; } ?>">
                         <a href="../admin/roles.php"><i class="fas fa-user"></i> Benutzerrollen</a>
-                    </li>
+                    </li> -->
                 </ul>
             </li>
 

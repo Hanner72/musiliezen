@@ -12,7 +12,7 @@ if($rbac->Users->hasRole('Admin', $userid)!=1){
   echo '<META HTTP-EQUIV="Refresh" Content="2; URL=../">';
 }
 
-$level = NOTICE; $message=$_SESSION['user'].' - Ist auf Seite Administration/Benutzer'; include '../assets/inc/logfile-end.php';
+$level = NOTICE; $message=$_SESSION['user'].' - Ist auf Seite Musikvereine'; include '../assets/inc/logfile-end.php';
 
 include "../assets/templates/05_scripte_head.php"; ?>
 
@@ -20,77 +20,37 @@ include "../assets/templates/05_scripte_head.php"; ?>
 
 <!-- Neuen User hinzufügen -->
   <?php
-    if (isset($_POST['user_neu'])) {
+    if (isset($_POST['musik_neu'])) {
 
-      $username = $_POST['username'];
-      $password = $_POST['password'];
-      $vorname = $_POST['vorname'];
-      $nachname = $_POST['nachname'];
+      $vereinsname = $_POST['vereinsname'];
+      $vereinsnr = $_POST['vereinsnummer'];
+      $obmann = $_POST['obmann'];
+      $mobil = $_POST['mobil'];
       $email = $_POST["email"];
-      $mobil = $_POST["mobil"];
-      $whatsappapi = $_POST["whatsappapi"];
-      $rolle = $_POST["rolle"];
-      $userfoto = basename($_FILES['userfoto']['name']);
-          
-      $userfotoext = pathinfo(basename($_FILES['userfoto']['name']), PATHINFO_EXTENSION);
-
-      $uploaddir = 'userbilder/';
-      
-      $userfotofile = "userfoto-" . basename($_FILES['userfoto']['tmp_name']) . "." . $userfotoext;
-
-      $userfotouploadfile = $uploaddir . "userfoto-" . basename($_FILES['userfoto']['tmp_name']) . "." . $userfotoext; 
+      $homepage = $_POST["homepage"];
 
       /* echo "<pre>";
       echo "FILES:<br>";
       print_r ($_FILES );
       echo "</pre>"; */
-
-      if(($_FILES['userfoto']['tmp_name'] != null)){
-        if (move_uploaded_file($_FILES['userfoto']['tmp_name'], $userfotouploadfile)) {
-            $sql2 = "INSERT INTO user (username,password,vorname,nachname,email,mobil,whatsappapi,foto)
-            VALUES('$username', '$password', '$vorname', '$nachname', '$email', '$mobil', '$whatsappapi', '$userfotofile')";
-            if(mysqli_query($conn, $sql2)){
-              $userid = mysqli_insert_id($conn);
-              $rbac->Users->assign($_POST['rolle'], $userid);
-              $level = INFO; $message=$_SESSION['user'].' - Hat den Benutzer "'. $username .'" hinzugefügt'; include '../assets/inc/logfile-end.php';
-              $_SESSION['alert-class'] = "alert-success";
-              $_SESSION['message'] = "User wurde erfolgreich hinzugefügt!";
-              $_SESSION['alert-icon'] = $alert_yes;
-              echo '<META HTTP-EQUIV="Refresh" Content="1; URL=user.php">';
-            } else{
-              echo $sql2."\n";
-              $level = ERROR; $message=$_SESSION['user'].' - Hinzufügen von Benutzer "'. $username .'" nicht erfolgreich! - DB Fehler: '.$sql2; include '../assets/inc/logfile-end.php';
-              $_SESSION['alert-class'] = "alert-danger";
-              $_SESSION['message'] = "User upload nicht erfolgreich! Datenbank Fehler!";
-              $_SESSION['alert-icon'] = $alert_no;
-              echo '<META HTTP-EQUIV="Refresh" Content="3; URL=user.php">';
-            }
-        } else {
-            $level = ERROR; $message=$_SESSION['user'].' - Hinzufügen von Bild für Benutzer "'. $username .'" nicht erfolgreich! - Zu große Datei?'; include '../assets/inc/logfile-end.php';
-            $_SESSION['alert-class'] = "alert-danger";
-            $_SESSION['message'] = "User upload nicht erfolgreich! Zu große Datei?";
-            $_SESSION['alert-icon'] = $alert_no;
-            echo '<META HTTP-EQUIV="Refresh" Content="3; URL=user.php">';
-        }
-      }else{
-        $sql2 = "INSERT INTO user (username,password,vorname,nachname,email,mobil,whatsappapi,foto)
-        VALUES('$username', '$password', '$vorname', '$nachname', '$email', '$mobil', '$whatsappapi', 'userleerbrown.jpg')";
-        if(mysqli_query($conn, $sql2)){
-          $userid = mysqli_insert_id($conn);
-          $rbac->Users->assign($_POST['rolle'], $userid);
-          $level = INFO; $message=$_SESSION['user'].' - Hat den Benutzer "'. $username .'" hinzugefügt'; include '../assets/inc/logfile-end.php';
-          $_SESSION['alert-class'] = "alert-success";
-          $_SESSION['message'] = "User wurde erfolgreich hinzugefügt!";
-          $_SESSION['alert-icon'] = $alert_yes;
-          echo '<META HTTP-EQUIV="Refresh" Content="1; URL=user.php">';
-        } else{
-          echo $sql2."\n";
-          $level = ERROR; $message=$_SESSION['user'].' - Hinzufügen von Benutzer "'. $username .'" nicht erfolgreich! - DB Fehler: '.$sql2; include '../assets/inc/logfile-end.php';
-          $_SESSION['alert-class'] = "alert-danger";
-          $_SESSION['message'] = "User Eintrag nicht erfolgreich! Datenbank Fehler!";
-          $_SESSION['alert-icon'] = $alert_no;
-          echo '<META HTTP-EQUIV="Refresh" Content="3; URL=user.php">';
-        }
+      
+      $sql2 = "INSERT INTO musikvereine (nr,name,obmann,mobil,email,homepage)
+      VALUES('$vereinsnr', '$vereinsname', '$obmann', '$mobil', '$email', '$homepage')";
+      if(mysqli_query($conn, $sql2)){
+        $userid = mysqli_insert_id($conn);
+        $rbac->Users->assign($_POST['rolle'], $userid);
+        $level = INFO; $message=$_SESSION['user'].' - Hat den Musikverein "'. $vereinsname .'" hinzugefügt'; include '../assets/inc/logfile-end.php';
+        $_SESSION['alert-class'] = "alert-success";
+        $_SESSION['message'] = "Musikverein wurde erfolgreich hinzugefügt!";
+        $_SESSION['alert-icon'] = $alert_yes;
+        echo '<META HTTP-EQUIV="Refresh" Content="1; URL=musikvereine.php">';
+      } else{
+        echo $sql2."\n";
+        $level = ERROR; $message=$_SESSION['user'].' - Hinzufügen von Musikverein "'. $vereinsname .'" nicht erfolgreich! - DB Fehler: '.$sql2; include '../assets/inc/logfile-end.php';
+        $_SESSION['alert-class'] = "alert-danger";
+        $_SESSION['message'] = "Musikverein Eintrag nicht erfolgreich! Datenbank Fehler!";
+        $_SESSION['alert-icon'] = $alert_no;
+        echo '<META HTTP-EQUIV="Refresh" Content="3; URL=musikvereine.php">';
       }
     }
   ?>
@@ -132,7 +92,7 @@ include "../assets/templates/05_scripte_head.php"; ?>
     ?>
 <!-- / Benutzerrolle löschen -->
 
-<title>Userliste</title>
+<title>Musikvereine</title>
 
 <body>
 
@@ -177,7 +137,7 @@ include "../assets/templates/05_scripte_head.php"; ?>
 <!-- Überschrift -->
         <div class="row m-1">
           <div class="col-xs-12 bt-3">
-            <h1>Userliste</h1>
+            <h1>Musikvereine</h1>
           </div>
         </div>
 
@@ -196,15 +156,15 @@ include "../assets/templates/05_scripte_head.php"; ?>
 <!-- User hinzufügen Form -->
         <div class="row m-1 mt-4">
           <div class="col-xs-12 mb-2">
-            <h3>User hinzufügen</h3>
+            <h3>Musikverein hinzufügen</h3>
           </div>
         </div>
 
         <form action="" id="needs-validation" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
           <div class="row">
             <div class="col-lg-4">
-              <label class="control-label">Benutzername *</label>
-              <input type="text" class="form-control" name="username" required>
+              <label class="control-label">Vereinsname *</label>
+              <input type="text" class="form-control" name="vereinsname" required>
               <div class="valid-feedback">
                 In Ordnung!
               </div>
@@ -213,8 +173,8 @@ include "../assets/templates/05_scripte_head.php"; ?>
               </div>
             </div>
             <div class="col-lg-4">
-              <label class="control-label">Passwort *</label>
-              <input type="text" class="form-control" name="password" required>
+              <label class="control-label">Vereinsnummer *</label>
+              <input type="text" class="form-control" name="vereinsnummer" required>
               <div class="valid-feedback">
                 In Ordnung!
               </div>
@@ -223,12 +183,22 @@ include "../assets/templates/05_scripte_head.php"; ?>
               </div>
             </div>
             <div class="col-lg-4">
-              <label class="control-label">Mobilnummer *</label>
+              <label class="control-label">Obmann *</label>
+              <input type="text" class="form-control" name="obmann" required>
+              <div class="valid-feedback">
+                In Ordnung!
+              </div>
+              <div class="invalid-feedback">
+                Bitte ausfüllen!
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <label class="control-label">Mobil Nr.</label>
               <input type="text" class="form-control" name="mobil" placeholder="+43 000 0000000">
             </div>
             <div class="col-lg-4">
-              <label class="control-label">Vorname *</label>
-              <input type="text" class="form-control" name="vorname" required>
+              <label class="control-label">E-mail *</label>
+              <input type="text" class="form-control" name="email" required>
               <div class="valid-feedback">
                 In Ordnung!
               </div>
@@ -237,149 +207,64 @@ include "../assets/templates/05_scripte_head.php"; ?>
               </div>
             </div>
             <div class="col-lg-4">
-              <label class="control-label">Nachname</label>
-              <input type="text" class="form-control" name="nachname" required>
-              <div class="valid-feedback">
-                In Ordnung!
-              </div>
-              <div class="invalid-feedback">
-                Bitte ausfüllen!
-              </div>
+              <label class="control-label">Homepage</label>
+              <input type="text" class="form-control" name="homepage" placeholder="https://">
             </div>
-            <div class="col-lg-4">
-              <label class="control-label">Whatsapp-API</label>
-              <input type="text" class="form-control" name="whatsappapi" placeholder="12345678">
-            </div>
-            <div class="col-lg-4 mb-2">
-              <label class="control-label">email *</label>
-              <input type="mail" class="form-control" name="email" required>
-              <div class="valid-feedback">
-                In Ordnung!
-              </div>
-              <div class="invalid-feedback">
-                Bitte ausfüllen!
-              </div>
-            </div>
-            <div class="col-lg-4 mb-2">
-              <label class="control-label">Rolle *</label>
-              <select class="form-select" name="rolle" required>
-                <option selected disabled value="">auswählen...</option>
-                <option disabled value="">---</option>
-                <?php
-                  $sql = "SELECT * FROM all_roles ORDER BY Title ASC";
-                  foreach ($pdo->query($sql) as $row) { ?>
-                    <option value="<?=$row['Title']?>"><?=$row['Title']?> - <?=$row['Description']?></option>
-                <?php } ?>
-              </select>
-              <div class="valid-feedback">
-                In Ordnung!
-              </div>
-              <div class="invalid-feedback">
-                Bitte ausfüllen!
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-12 col-md-12 col-xs-12">  
-            <div class="form-group">  
-              <label>Foto vom Benutzer</label>  
-              <div class="custom-file">  
-                  <input type="file" class="custom-file-input" id="validatedCustomFile" name="userfoto">  
-                  <label class="custom-file-label" for="validatedCustomFile">Foto auswählen...</label> 
-              </div>  
-            </div>                                  
           </div>
 
           <div class="form-row">
             <div class="col-9 mb-1">
               <div class="col-2 form-group text-right mt-3 mb-3 float-right"> <!-- Submit Button -->
-                <input type="submit" name ="user_neu" value="User eintragen" class="btn btn-primary" id="anzeigen">
+                <input type="submit" name ="musik_neu" value="Verein eintragen" class="btn btn-primary" id="anzeigen">
               </div>
             </div>
           </div>
         </form>
 <!-- / User hinzufügen Form -->
 
-<!-- Boden Prüfberichte Tabelle -->
+<!-- Musikverein Tabelle -->
 
-        <!-- Importierte Bauvorhabenliste anzeigen -->
-        <?php
-          $sql = "SELECT *, COUNT(RoleID) anzahl FROM user
-                    LEFT JOIN  all_userroles ur ON user.ID = ur.UserID
-                      GROUP BY ID
-                      ORDER BY nachname ASC";
-          $result = mysqli_query($conn, $sql);
-          $e = function ($value) {
-              return htmlspecialchars($value, ENT_COMPAT, 'UTF-8');
-          };        
-        ?>
-    
         <div class='row m-1'>
           <div class="col-12 p-3 border border-warning table-responsive">
             <table class="datatable table border-top table-hover table-sm">
               <thead>
                 <tr class='table-warning'>
                   <th class="text-center" scope='col'>ID</th> <!-- Spalte in ../assets/js/datatable.js ausgeblendet -->
-                  <th scope='col'>Username</th>
-                  <th scope='col' class="sp-l">Passwort</th>
-                  <th scope='col' class="sp-l">email</th>
-                  <th scope='col' class="sp-l">Rolle</th>
-                  <th scope='col' class="sp-m">Userfoto</th>
+                  <th scope='col'>Verein Nr.</th>
+                  <th scope='col' class="sp-l">Verein</th>
+                  <th scope='col' class="sp-l">Obmann</th>
+                  <th scope='col' class="sp-l">Mobil</th>
+                  <th scope='col' class="sp-m">E-Mail</th>
+                  <th scope='col' class="sp-m">Homepage</th>
                   <th class="text-center" scope='col'>Aktionen</th>
                 </tr>
               </thead>
               <tbody>
-                <?php foreach ($result as $row):
-                $u_ID = $e($row['ID']);
-                $u_username = $e($row['username']);
-                $u_password = $e($row['password']);
-                $U_email = $e($row['email']);
-                $u_foto = $e($row['foto']);
-                $u_anzahl = $row['anzahl'];
-
-                //Buttons und Zustände inkl. Links
-                if($u_anzahl>0){
-                  $delete = "<button type='button' class='btn btn-secondary btn-sm' data-placement='left' data-toggle='tooltip' title='Eintrag kann nicht gelöscht werden, da noch Rollen vorhanden sind!'><a href='#$u_ID'><i class='fa fa-trash text-white'></i></a></button>";
-                }else{
-                  $delete = "<button type='button' class='btn btn-danger btn-sm' data-placement='left' data-toggle='tooltip' title='Eintrag löschen'><a href='?userdelete=" . $u_username . "&u_foto=".$u_foto."&uid=".$u_ID."'><i class='fa fa-trash text-white'></i></a></button>";
-                }
-                $deleteinaktiv = "<button type='button' class='btn btn-outline-secondary btn-sm' data-placement='left' data-toggle='tooltip' title='KEINE Berechtigung zum löschen!'><i class='fa fa-trash text-secondary'></i></button>";
-                $edit = "<button type='button' class='btn btn-warning btn-sm' data-toggle='tooltip' title='Eintrag ändern'><a href='useredit.php?useredit=" . $u_username . "'><i class='fas fa-pencil-alt'></i></a></button>";
+                <?php
+                $sql = "SELECT * FROM musikvereine ORDER BY nr ASC";
+                foreach ($pdo->query($sql) as $row) {
+                $m_id = $row['id'];
+                $m_nr = $row['nr'];
+                $m_name = $row['name'];
+                $m_obmann = $row['obmann'];
+                $m_mobil = $row['mobil'];
+                $m_email = $row['email'];
+                $m_homepage = $row['homepage'];
                 ?>
+
                 <tr>
-                  <td class="align-middle text-center" scope='row'><?php echo $e($row['ID']); ?></td>
-                  <td class="align-middle"><?php echo $e($row['username']); ?></td>
-                  <td class="align-middle sp-l"><?php echo $e($row['password']); ?></td>
-                  <td class="align-middle sp-l"><?php echo $e($row['email']); ?></td>
-                  <td class="align-middle">
-                  <?php
-                    $sql2 = "SELECT user.*, all_userroles.UserID, all_roles.ID RoleID, all_roles.Title, all_roles.Description FROM user
-                              LEFT JOIN all_userroles ON user.ID = all_userroles.UserID
-                              LEFT JOIN all_roles ON all_userroles.RoleID = all_roles.ID
-                                WHERE user.ID = $u_ID";
-                    foreach ($pdo->query($sql2) as $row2) { ?>
-                        <?=($row2['Title']!=NULL)?$row2['Title']." (".$row2['Description'].") <a href='?roledelete=1&uid=" . $row2['ID'] . "&rid=".$row2['RoleID']."'><span class='badge bg-danger' data-toggle='tooltip' title='Rolle entfernen'><i class='fas fa-user-slash'></i></span></a><br>":""?>
-                  <?php } ?>
+                  <td class="align-middle text-center" scope='row'><?= $m_id ?></td>
+                  <td class="align-middle"><?= $m_nr ?></td>
+                  <td class="align-middle sp-l"><?= $m_name ?></td>
+                  <td class="align-middle sp-l"><?= $m_obmann ?></td>
+                  <td class="align-middle"><?= $m_mobil ?></td>
+                  <td class="align-middle"><?= $m_email ?></td>
+                  <td class="align-middle"><?= $m_homepage ?></td>
+                  <td class='align-middle text-center'>
+                    <button type='button' class='btn btn-secondary btn-sm' data-placement='left' data-toggle='tooltip' title='Eintrag kann nicht gelöscht werden, da noch Rollen vorhanden sind!'><a href='#$u_ID'><i class='fa fa-trash text-white'></i></a></button>
                   </td>
-                  <td class="align-middle sp-m">
-                    <img src="./userbilder/<?php echo ($row['foto']==NULL) ? 'userleer.png' : $row['foto']; ?>" height="50px" width="50px" style="border-radius: 50%; border-style: solid; border-width: 2px; border-color: #333333;" data-placement="left" data-toggle="tooltip" title="<img src='userbilder/<?php echo ($row['foto']==NULL) ? 'userleer.png' : $row['foto']; ?>' width='160px' />" >
-                  </td>
-                  <?php
-                    if ($rbac->Users->hasRole('Admin', $userid)==1) { // If else für Bautagesbericht hinzufügen Button (grün oder rot)
-                      echo "<td class='align-middle text-center'>"
-                        . $edit." ".$delete
-                        . "</td>";
-                    } elseif ($rbac->Users->hasRole('DirAH-User', $userid)==1) {
-                      echo "<td class='align-middle text-center'>"
-                        . $deleteinaktiv
-                        . "</td>";
-                    } else{
-                      echo "<td class='align-middle text-center'>"
-                        . $deleteinaktiv
-                        . "</td>";
-                    }
-                    ?>
                 </tr>
-                <?php endforeach;?>
+                <?php } ?>
               </tbody>
             </table>
           </div>
@@ -396,7 +281,7 @@ include "../assets/templates/05_scripte_head.php"; ?>
   <?php include "../assets/templates/11_datatable.php"; ?>
 
   <!-- Seitenspezifische Scriptdatei zum anpassen -->
-  <script type="text/javascript" src="../assets/js/datatable_user.js"></script>
+  <script type="text/javascript" src="../assets/js/datatable_mv.js"></script>
 
   <script>
     // Example starter JavaScript for disabling form submissions if there are invalid fields
