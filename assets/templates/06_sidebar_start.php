@@ -55,7 +55,7 @@
                 <a href="#lagerSubmenu" data-toggle="collapse" aria-expanded="<?=$lagerexpand?>" class="dropdown-toggle <?=$lagertoggle?>">Konzertwertung</a>
                 <ul class="collapse list-unstyled <?=$lagershow?>" id="lagerSubmenu">
                     <li class="<?=($pfad==$sub."/lager/artikel.php")?"liactive":""?> lismall">
-                        <a href="../lager/artikel.php">Musikvereine</a>
+                        <a href="../lager/artikel.php">Wertungen verwalten</a>
                     </li>
                     <li class="<?=($pfad==$sub."/lager/lagerstand.php")?"liactive":""?>">
                         <a href="../lager/lagerstand.php"><i class="fas fa-chart-line"></i> Lagerstand</a>
